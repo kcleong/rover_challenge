@@ -51,9 +51,12 @@ class ControlCenter(object):
         # Add the rovers and process the movements
         for position, movements in rovers.items():
             rover = self.add_rover(position)
-
+            print rover.position
+            print '-' * 10
             for movement in movements:
-                rover.move(self.grid, movement)
+
+                coords = rover.move(self.grid, movement)
+                print '{0} - {1}'.format(movement, coords)
 
             positions += rover.position
 
