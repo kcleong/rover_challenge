@@ -9,9 +9,14 @@ class GridTestSuite(unittest.TestCase):
     """Advanced test cases."""
 
     def test_instantion(self):
-        """ Test if we can instantiate a rover object """
+        """ Test if we can instantiate a grid object """
         grid = Grid(5, 5)
         self.assertEqual(type(grid), Grid)
+
+    def test_invalid_instantation(self):
+        """ Test if we can instantiate a grid object with invalid values """
+        with self.assertRaises(ValueError):
+            Grid('a', None)  # This should give a value error
 
     def test_xy_max(self):
         """ Test if a given coords are set in the grid """
