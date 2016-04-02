@@ -74,6 +74,11 @@ class Position(object):
         x_coord = self.x_coord + movement[0]
         y_coord = self.y_coord + movement[1]
 
+        invalid = False
+        if x_coord < 0 or x_coord > self.grid.max_x:
+            raise ValueError('X coordinates are out of bounds')
+        if y_coord < 0 or y_coord > self.grid.max_y:
+            raise ValueError('Y coordinates are out of bounds')
 
         self.x_coord = x_coord
         self.y_coord = y_coord
