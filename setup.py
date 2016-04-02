@@ -10,13 +10,13 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='sample',
+    name='challenge',
     version='0.0.1',
-    description='Sample package for Python-Guide.org',
+    description='Rover challenge',
     long_description=readme,
     author='Kim Chee Leong',
     author_email='kaceeleong@gmail.com',
-    url='https://github.com/kcleong/samplemod',
+    url='https://github.com/kcleong/challenge',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
