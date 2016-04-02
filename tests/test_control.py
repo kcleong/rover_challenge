@@ -5,6 +5,8 @@ with the rovers.
 
 import unittest
 
+from challenge.controlcenter import ControlCenter
+
 
 class ControlCenterSuite(unittest.TestCase):
     """ Unit tests for control center """
@@ -27,9 +29,27 @@ class ControlCenterSuite(unittest.TestCase):
     def test_add_rover(self):
         """ Test if a rover can be added using the control center
         """
-        # TODO: call control center and add rover
-        # control = ControlCenter().add_rover('12N')
-        self.assertTrue(None)
+        control = ControlCenter()
+        rover = control.add_rover('00N')
+
+        # Currently there is one rover active
+        self.assertEqual(1, len(control.rovers))
+        # And rover returned by control is the same as the rover in the list
+        self.assertEqual(rover, control.rovers[0])
+
+    def test_multiple_rovers(self):
+        """ Test if multiple rovers can be added to the control center """
+        control = ControlCenter()
+        first = control.add_rover('00N')
+        second = control.add_rover('32S')
+        third = control.add_rover('05E')
+
+        # Currently there are three rovers active
+        self.assertEqual(3, len(control.rovers))
+        # Test if each rover is present in control center
+        self.assertEqual(first, control.rovers[0])
+        self.assertEqual(second, control.rovers[1])
+        self.assertEqual(third, control.rovers[2])
 
     def control_center_singleton(self):
         """ Instantiate control center and check if there can be
@@ -37,7 +57,12 @@ class ControlCenterSuite(unittest.TestCase):
         """
         # TODO: call control center multiple times and check we have
         # the same center every time
-        self.assertTrue(None)
+        first = ControlCenter()
+        second = ControlCenter()
+
+        first.rovers = 'spam bacon ham eggs'
+        # There can be only one control center
+        self.assertEqual(first.rovers, second.rovers)
 
 
 if __name__ == '__main__':
