@@ -1,19 +1,6 @@
 Rover challenge
 ===============
 
-Running tests
--------------
-
-In the current directory run the following commands::
-
-    # install package using setup.py in editable mode
-    pip install -e .
-    # Install nose test from dependencies
-    pip install -r requirements.txt
-    # Run all the tests
-    nosetests -w ./tests
-
-
 Problem Objective
 -----------------
 
@@ -36,4 +23,15 @@ spot. 'M' means move forward one grid point, and maintain the same heading.
 
 Assume that the square directly North from (x, y) is (x, y+1).
 
+Running tests
+-------------
+
+In the current directory run the following commands::
+
+    # install package using setup.py in editable mode
+    pip install -e .
+    # Install nose test from dependencies
+    pip install -r requirements.txt
+    # Run all the tests
+    nosetests -w ./tests
 

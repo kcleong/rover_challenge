@@ -1,4 +1,4 @@
-""" Python module for a robotic rover """
+""" Python module for the grid and a position in a grid """
 
 
 class Grid(object):
@@ -17,3 +17,42 @@ class Grid(object):
     def move(self, position, cmd):
         """ Process a move command and return a new coordinate """
         # TODO: process a movement from a given position
+        pos = Position(position)
+
+
+class Position(object):
+    """ Represent a position in the grid """
+
+    def __init__(self, position):
+        """
+        """
+
+        self.x_coord = int(position[0])
+        self.y_coord = int(position[1])
+        self.direction = position[2]
+
+    @property
+    def formatted(self):
+        return '{0}{1}{2}'.format(self.x_coord, self.y_coord, self.direction)
+
+    def turn(self, side):
+        """ Turn left or right, calculate which direction we are
+        pointed to after turning.
+        """
+
+        directions = ['N', 'E', 'S', 'W']
+        options = {'L': -1, 'R': 1}
+
+        idx = directions.index(self.direction)
+        sum = options.get(side)
+
+        movement = idx + sum
+        # At the end of the directions list, move index pointer to
+        # the other side.
+        if movement >= len(directions):
+            movement = 0
+
+        new_direction = directions[movement]
+        self.direction = new_direction
+        return self.formatted
+
