@@ -17,7 +17,7 @@ class Grid(object):
     def move(self, position, cmd):
         """ Process a move command and return a new coordinate """
         # TODO: process a movement from a given position
-        position = Position(position)
+        position = Position(self, position)
 
         if cmd in ('L', 'R'):
             return position.turn(cmd)
@@ -28,10 +28,10 @@ class Grid(object):
 class Position(object):
     """ Represent a position in the grid """
 
-    def __init__(self, position):
+    def __init__(self, grid, position):
         """
         """
-
+        self.grid = grid
         self.x_coord = int(position[0])
         self.y_coord = int(position[1])
         self.direction = position[2]
@@ -74,7 +74,6 @@ class Position(object):
         x_coord = self.x_coord + movement[0]
         y_coord = self.y_coord + movement[1]
 
-        # TODO: check if coordinate isn't out of bounds in the grid
 
         self.x_coord = x_coord
         self.y_coord = y_coord

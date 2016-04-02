@@ -47,12 +47,17 @@ class ControlCenter(object):
                 # Uneven number we have rover starting position
                 rovers[line] = commands[idx + 1]
 
+        positions = ''
         # Add the rovers and process the movements
         for position, movements in rovers.items():
             rover = self.add_rover(position)
 
             for movement in movements:
                 rover.move(self.grid, movement)
+
+            positions += rover.position
+
+        return positions
 
     def add_rover(self, position):
         """ Add a rover to the plateau """
