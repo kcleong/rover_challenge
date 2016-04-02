@@ -10,4 +10,4 @@ class Rover(object):
 
     def move(self, grid, cmd):
         """ Move rover one movement at a time """
-        return grid.move(self.position, cmd)
+        self.position = grid.move(self.position, cmd)
