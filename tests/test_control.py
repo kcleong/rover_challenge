@@ -6,6 +6,7 @@ with the rovers.
 import unittest
 
 from challenge.controlcenter import ControlCenter
+from challenge.grid import Grid
 
 
 class ControlCenterSuite(unittest.TestCase):
@@ -23,8 +24,16 @@ class ControlCenterSuite(unittest.TestCase):
 
         output_str = '13N\n51E'
 
+        control = ControlCenter()
+        return_value = control.input_command(input_str)
+
+        # The control object has a grid attribute
+        self.assertTrue(hasattr(control, 'grid'))
+        # This grid attribute is from the Grid class
+        self.assertEqual(type(control.grid), Grid)
+
         # TODO: call control center and execute command
-        self.assertEquals(None, output_str)
+        self.assertEquals(output_str, return_value)
 
     def test_add_rover(self):
         """ Test if a rover can be added using the control center
