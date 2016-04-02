@@ -17,7 +17,12 @@ class Grid(object):
     def move(self, position, cmd):
         """ Process a move command and return a new coordinate """
         # TODO: process a movement from a given position
-        pos = Position(position)
+        position = Position(position)
+
+        if cmd in ('L', 'R'):
+            return position.turn(cmd)
+        else:
+            return position.move()
 
 
 class Position(object):
@@ -56,3 +61,6 @@ class Position(object):
         self.direction = new_direction
         return self.formatted
 
+    def move(self):
+        """ Move one position forward
+        """

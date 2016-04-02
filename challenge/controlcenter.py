@@ -1,4 +1,6 @@
 """ The control center module to control robotic rovers """
+from collections import OrderedDict
+
 from challenge.grid import Grid
 from challenge.rover import Rover
 
@@ -19,11 +21,12 @@ class ControlCenter(object):
     def input_command(self, cmd):
         """ Input command to control rovers """
         commands = cmd.split('\n')
+
         if len(commands) < 3:
             raise ValueError(
                 u'Input command does not contain enough lines')
 
-        commands.reverse()  # Reverse command so first command is on top
+        commands.reverse()  # Reverse command so coordinates are on top
 
         coords = commands.pop()
         if len(coords) != 2:
@@ -34,7 +37,22 @@ class ControlCenter(object):
         max_y = int(coords[1])
         self.grid = Grid(max_x, max_y)
 
-        # TODO: process input commands
+        # Reverse again so we can start processing the rover commands
+        commands.reverse()
+
+        rovers = OrderedDict()
+        # Get the rovers positions and movements
+        for idx, line in enumerate(commands):
+            if idx % 2 == 0:
+                # Uneven number we have rover starting position
+                rovers[line] = commands[idx + 1]
+
+        # Add the rovers and process the movements
+        for position, movements in rovers.items():
+            rover = self.add_rover(position)
+
+            for movement in movements:
+                rover.move(self.grid, movement)
 
     def add_rover(self, position):
         """ Add a rover to the plateau """
