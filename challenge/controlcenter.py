@@ -12,11 +12,14 @@ class ControlCenter(object):
     def __init__(self):
         """ Initialize control center """
         self.__dict__ = self.__shared_state
+        self.rovers = []
 
     def input_command(self, cmd):
         """ Input command to control rovers """
+        # TODO: process input commands
 
     def add_rover(self, position):
         """ Add a rover to the plateau """
-
-        return Rover(position)
+        rover = Rover(position)
+        self.rovers.append(rover)
+        return rover
