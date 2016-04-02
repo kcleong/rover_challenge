@@ -35,3 +35,12 @@ In the current directory run the following commands::
     # Run all the tests
     nosetests -w ./tests
 
+
+Structure
+---------
+
+Source code of this challenge can be found in the `challenge` directory, the
+ tests can be found in the `test` directory. In
+ `tests.test_control.ControlCenterSuite:test_input` and example can be found
+ with a command input which is given, and an output which is returned by the
+ command center.
