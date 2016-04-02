@@ -64,3 +64,18 @@ class Position(object):
     def move(self):
         """ Move one position forward
         """
+        directions = {
+            'N': (0, 1),
+            'E': (1, 0),
+            'S': (0, -1),
+            'W': (-1, 0)
+        }
+        movement = directions.get(self.direction)
+        x_coord = self.x_coord + movement[0]
+        y_coord = self.y_coord + movement[1]
+
+        # TODO: check if coordinate isn't out of bounds in the grid
+
+        self.x_coord = x_coord
+        self.y_coord = y_coord
+        return self.formatted

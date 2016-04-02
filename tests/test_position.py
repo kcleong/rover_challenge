@@ -54,6 +54,40 @@ class PositionTestSuite(unittest.TestCase):
         self.assertEqual(position.direction, 'N')
         self.assertEqual(coords, '31N')
 
+    def test_move_north(self):
+        pos_str = '12N'
+        position = Position(pos_str)
+
+        coords = position.move()
+        self.assertEqual(position.direction, 'N')
+        self.assertEqual(coords, '13N')
+
+
+    def test_move_east(self):
+        pos_str = '12E'
+        position = Position(pos_str)
+
+        coords = position.move()
+        self.assertEqual(position.direction, 'E')
+        self.assertEqual(coords, '22E')
+
+
+    def test_move_south(self):
+        pos_str = '12S'
+        position = Position(pos_str)
+
+        coords = position.move()
+        self.assertEqual(position.direction, 'S')
+        self.assertEqual(coords, '11S')
+
+
+    def test_move_west(self):
+        pos_str = '12W'
+        position = Position(pos_str)
+
+        coords = position.move()
+        self.assertEqual(position.direction, 'W')
+        self.assertEqual(coords, '02W')
 
 if __name__ == '__main__':
     unittest.main()

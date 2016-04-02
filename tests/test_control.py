@@ -32,7 +32,7 @@ class ControlCenterSuite(unittest.TestCase):
         # This grid attribute is from the Grid class
         self.assertEqual(type(control.grid), Grid)
         # There are three rovers present
-        self.assertEqual(len(control.rovers), 3)
+        self.assertEqual(len(control.rovers), 2)
 
         # TODO: call control center and execute command
         self.assertEquals(output_str, return_value)
